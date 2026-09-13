@@ -1,0 +1,19 @@
+{
+  "fixture_format_version": 1,
+  "normative_wire_format": false,
+  "profile_id": "FME-FER-AFFINE-2D-BINARY-V1",
+  "vectors": [
+    { "path": "",       "p": "0",   "q": "0",   "depth": 0 },
+    { "path": "0",      "p": "-3",  "q": "0",   "depth": 1 },
+    { "path": "1",      "p": "3",   "q": "0",   "depth": 1 },
+    { "path": "00",     "p": "-12", "q": "-3",  "depth": 2 },
+    { "path": "01",     "p": "6",   "q": "3",   "depth": 2 },
+    { "path": "10",     "p": "-6",  "q": "3",   "depth": 2 },
+    { "path": "11",     "p": "12",  "q": "-3",  "depth": 2 },
+    { "path": "000",    "p": "-36", "q": "-15", "depth": 3 },
+    { "path": "111",    "p": "36",  "q": "-15", "depth": 3 },
+    { "path": "0101",   "p": "66",  "q": "33",  "depth": 4 },
+    { "path": "1010",   "p": "-66", "q": "33",  "depth": 4 },
+    { "path": "001101", "p": "690", "q": "237", "depth": 6 }
+  ]
+}
