@@ -61,6 +61,7 @@ phase_001="docs/phase-docs/phase-001-100/phase 001/closeout.md"
 phase_002="docs/phase-docs/phase-001-100/phase 002/closeout.md"
 phase_003="docs/phase-docs/phase-001-100/phase 003/closeout.md"
 phase_004="docs/phase-docs/phase-001-100/phase 004/closeout.md"
+phase_005="docs/phase-docs/phase-001-100/phase 005/closeout.md"
 
 grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |' "$phase_index" \
     || fail "Phase 001 index entry or anchor is incorrect"
@@ -97,6 +98,15 @@ grep -Fq 'Status: **SEALED**' "$phase_004" \
 
 grep -Fq '`b417d54`' "$phase_004" \
     || fail "Phase 004 closeout anchor is incorrect"
+
+grep -Fq '| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055` |' "$phase_index" \
+    || fail "Phase 005 index entry or anchor is incorrect"
+
+grep -Fq 'Status: **SEALED**' "$phase_005" \
+    || fail "Phase 005 closeout is not SEALED"
+
+grep -Fq '`f3ab055`' "$phase_005" \
+    || fail "Phase 005 closeout anchor is incorrect"
 
 printf '%s\n' "repository baseline audit: phase ledger semantics: PASS"
 
