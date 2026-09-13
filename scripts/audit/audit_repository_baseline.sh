@@ -21,6 +21,8 @@ required_files=(
     ".github/workflows/ci.yml"
     "scripts/audit/audit_repository_baseline.sh"
     "scripts/audit/audit_phase_004_conformance_expansion.py"
+    "scripts/audit/audit_phase_005_benchmark_characterization.py"
+    "crates/fme-fer/benches/baseline_v1.rs"
     "docs/IMPLEMENTATION_SCOPE.md"
     "docs/PROFILE_STATUS.md"
     "docs/MATURITY_MODEL.md"
@@ -32,6 +34,7 @@ required_files=(
     "docs/phase-docs/phase-001-100/phase 002/closeout.md"
     "docs/phase-docs/phase-001-100/phase 003/closeout.md"
     "docs/phase-docs/phase-001-100/phase 004/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 005/closeout.md"
     "conformance/fer-affine-2d-binary-v1/vectors.json"
     "scripts/conformance/reference_fer_affine_2d_binary_v1.py"
 )
@@ -127,6 +130,9 @@ PY
 
 PYTHONDONTWRITEBYTECODE=1 \
     python3 scripts/audit/audit_phase_004_conformance_expansion.py
+
+PYTHONDONTWRITEBYTECODE=1 \
+    python3 scripts/audit/audit_phase_005_benchmark_characterization.py
 
 printf '%s\n' \
     "repository baseline audit: required files: PASS" \

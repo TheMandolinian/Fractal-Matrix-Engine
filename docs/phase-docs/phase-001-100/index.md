@@ -8,6 +8,7 @@ This index is the chronological implementation ledger for FME phases 001–100.
 | 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` |
 | 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` |
 | 004 | Baseline FER Conformance Expansion | SEALED | `b417d54` |
+| 005 | Baseline FER Benchmark Characterization | IN PROGRESS | `PENDING_AFTER_IMPLEMENTATION_COMMIT` |
 
 ## Phase 001 — Exact Baseline FER Core
 
@@ -49,8 +50,17 @@ See:
 
 `phase 004/closeout.md`
 
+## Phase 005 — Baseline FER Benchmark Characterization
+
+Establishes a reproducible measurement harness for exact baseline FER
+evaluation without making system-level performance or scalability claims.
+
+See:
+
+`phase 005/closeout.md`
+
 ## Current Position
 
 Last sealed phase: **004**
 
-Next available phase: **005**
+Current phase: **005 — IN PROGRESS**
