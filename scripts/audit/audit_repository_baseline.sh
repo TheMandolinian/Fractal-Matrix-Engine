@@ -20,6 +20,7 @@ required_files=(
     "CHANGELOG.md"
     ".github/workflows/ci.yml"
     "scripts/audit/audit_repository_baseline.sh"
+    "scripts/audit/audit_phase_004_conformance_expansion.py"
     "docs/IMPLEMENTATION_SCOPE.md"
     "docs/PROFILE_STATUS.md"
     "docs/MATURITY_MODEL.md"
@@ -30,7 +31,9 @@ required_files=(
     "docs/phase-docs/phase-001-100/phase 001/closeout.md"
     "docs/phase-docs/phase-001-100/phase 002/closeout.md"
     "docs/phase-docs/phase-001-100/phase 003/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 004/closeout.md"
     "conformance/fer-affine-2d-binary-v1/vectors.json"
+    "scripts/conformance/reference_fer_affine_2d_binary_v1.py"
 )
 
 for file in "${required_files[@]}"; do
@@ -54,6 +57,7 @@ phase_index="docs/phase-docs/phase-001-100/index.md"
 phase_001="docs/phase-docs/phase-001-100/phase 001/closeout.md"
 phase_002="docs/phase-docs/phase-001-100/phase 002/closeout.md"
 phase_003="docs/phase-docs/phase-001-100/phase 003/closeout.md"
+phase_004="docs/phase-docs/phase-001-100/phase 004/closeout.md"
 
 grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |' "$phase_index" \
     || fail "Phase 001 index entry or anchor is incorrect"
@@ -82,6 +86,15 @@ grep -Fq 'Status: **SEALED**' "$phase_003" \
 grep -Fq '`aa7aaa84`' "$phase_003" \
     || fail "Phase 003 closeout anchor is incorrect"
 
+grep -Fq '| 004 | Baseline FER Conformance Expansion | IN PROGRESS | `PENDING_AFTER_IMPLEMENTATION_COMMIT` |' "$phase_index" \
+    || fail "Phase 004 index entry or pending anchor is incorrect"
+
+grep -Fq 'Status: **IN PROGRESS**' "$phase_004" \
+    || fail "Phase 004 closeout is not IN PROGRESS"
+
+grep -Fq '`PENDING_AFTER_IMPLEMENTATION_COMMIT`' "$phase_004" \
+    || fail "Phase 004 pending anchor is missing"
+
 printf '%s\n' "repository baseline audit: phase ledger semantics: PASS"
 
 python3 - <<'PY'
@@ -91,7 +104,7 @@ from pathlib import Path
 path = Path("conformance/fer-affine-2d-binary-v1/vectors.json")
 data = json.loads(path.read_text(encoding="utf-8"))
 
-assert data["fixture_format_version"] == 1
+assert data["fixture_format_version"] == 2
 assert data["normative_wire_format"] is False
 assert data["profile_id"] == "FME-FER-AFFINE-2D-BINARY-V1"
 assert isinstance(data["vectors"], list)
@@ -111,6 +124,9 @@ for vector in data["vectors"]:
 
 print("repository baseline audit: conformance fixture structure: PASS")
 PY
+
+PYTHONDONTWRITEBYTECODE=1 \
+    python3 scripts/audit/audit_phase_004_conformance_expansion.py
 
 printf '%s\n' \
     "repository baseline audit: required files: PASS" \
