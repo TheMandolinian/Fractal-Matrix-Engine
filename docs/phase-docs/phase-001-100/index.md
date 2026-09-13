@@ -6,7 +6,7 @@ This index is the chronological implementation ledger for FME phases 001–100.
 |---|---|---|---|
 | 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |
 | 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` |
-| 003 | Institutional Repository Baseline | IN PROGRESS | `PENDING_AFTER_IMPLEMENTATION_COMMIT` |
+| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` |
 
 ## Phase 001 — Exact Baseline FER Core
 
@@ -41,6 +41,6 @@ See:
 
 ## Current Position
 
-Current active phase: **003**
+Last sealed phase: **003**
 
-Next available phase after closeout: **004**
+Next available phase: **004**

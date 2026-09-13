@@ -1,10 +1,10 @@
 # Phase 003 — Institutional Repository Baseline
 
-Status: **IN PROGRESS**
+Status: **SEALED**
 
 Commit anchor:
 
-`PENDING_AFTER_IMPLEMENTATION_COMMIT`
+`aa7aaa84`
 
 ## Objective
 
@@ -97,6 +97,12 @@ Phase 003 may be marked `SEALED` only after:
 8. main is pushed;
 9. remote parity is confirmed.
 
-Until those conditions are satisfied, this phase remains:
+The institutional implementation boundary was established at:
 
-`IN PROGRESS`
+`aa7aaa84`
+
+The subsequent closeout-repair commit records this actual implementation
+anchor in the phase ledger without attempting to make a commit contain its
+own hash.
+
+Phase 003 is **SEALED**.

@@ -61,8 +61,8 @@ grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |' "$phase_index
 grep -Fq '| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` |' "$phase_index" \
     || fail "Phase 002 index entry or anchor is incorrect"
 
-grep -Fq '| 003 | Institutional Repository Baseline | IN PROGRESS | `PENDING_AFTER_IMPLEMENTATION_COMMIT` |' "$phase_index" \
-    || fail "Phase 003 index entry is not correctly marked IN PROGRESS"
+grep -Fq '| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` |' "$phase_index" \
+    || fail "Phase 003 index entry or anchor is incorrect"
 
 grep -Fq 'Status: **SEALED**' "$phase_001" \
     || fail "Phase 001 closeout is not SEALED"
@@ -76,11 +76,11 @@ grep -Fq 'Status: **SEALED**' "$phase_002" \
 grep -Fq '`c5e996b5`' "$phase_002" \
     || fail "Phase 002 closeout anchor is incorrect"
 
-grep -Fq 'Status: **IN PROGRESS**' "$phase_003" \
-    || fail "Phase 003 closeout must remain IN PROGRESS before implementation commit"
+grep -Fq 'Status: **SEALED**' "$phase_003" \
+    || fail "Phase 003 closeout is not SEALED"
 
-grep -Fq '`PENDING_AFTER_IMPLEMENTATION_COMMIT`' "$phase_003" \
-    || fail "Phase 003 pending implementation anchor is missing"
+grep -Fq '`aa7aaa84`' "$phase_003" \
+    || fail "Phase 003 closeout anchor is incorrect"
 
 printf '%s\n' "repository baseline audit: phase ledger semantics: PASS"
 
