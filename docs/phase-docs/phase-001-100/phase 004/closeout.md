@@ -1,10 +1,10 @@
 # Phase 004 — Baseline FER Conformance Expansion
 
-Status: **IN PROGRESS**
+Status: **SEALED**
 
 Commit anchor:
 
-`PENDING_AFTER_IMPLEMENTATION_COMMIT`
+`b417d54`
 
 ## Objective
 
@@ -135,6 +135,59 @@ Phase 004 should verify, at minimum:
 - Clippy with warnings denied;
 - repository audit;
 - whitespace integrity.
+
+## Implementation Completed
+
+Phase 004 established:
+
+- fixture format version 2;
+- 34 exact success vectors;
+- 5 deterministic malformed-path failure vectors;
+- 8 continuation vectors;
+- repeated-F0 and repeated-F1 coverage;
+- alternating transform coverage;
+- deterministic mixed-path coverage;
+- exact depth-128 arbitrary-precision cases;
+- fixture provenance metadata;
+- a secondary exact rational-affine reference evaluator;
+- expanded Rust fixture consumption;
+- a dedicated Phase 004 conformance audit;
+- repository baseline-audit integration.
+
+No authoritative FER engine source was changed.
+
+## Verification Performed
+
+The Phase 004 implementation passed:
+
+- Rust formatting;
+- locked dependency resolution;
+- workspace check;
+- complete workspace tests;
+- 11 FER conformance tests;
+- Clippy with warnings denied;
+- Phase 004 conformance expansion audit;
+- repository baseline audit;
+- Python source compilation;
+- whitespace validation;
+- FER engine-source scope validation;
+- benchmark-scope validation.
+
+The secondary exact evaluator reproduces the established shallow corpus and
+the expanded fixture values using exact rational affine evaluation.
+
+This strengthens repository-local conformance evidence but does not establish
+independent reproduction.
+
+## Resulting Repository State
+
+The Phase 004 implementation boundary was established at:
+
+`b417d54`
+
+Phase 004 strengthens correctness evidence sufficiently to permit later
+consideration of FER benchmark work without making any benchmark or performance
+claim in this phase.
 
 ## Closeout Requirement
 

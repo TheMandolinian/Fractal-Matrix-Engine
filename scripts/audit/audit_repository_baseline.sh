@@ -86,14 +86,14 @@ grep -Fq 'Status: **SEALED**' "$phase_003" \
 grep -Fq '`aa7aaa84`' "$phase_003" \
     || fail "Phase 003 closeout anchor is incorrect"
 
-grep -Fq '| 004 | Baseline FER Conformance Expansion | IN PROGRESS | `PENDING_AFTER_IMPLEMENTATION_COMMIT` |' "$phase_index" \
-    || fail "Phase 004 index entry or pending anchor is incorrect"
+grep -Fq '| 004 | Baseline FER Conformance Expansion | SEALED | `b417d54` |' "$phase_index" \
+    || fail "Phase 004 index entry or anchor is incorrect"
 
-grep -Fq 'Status: **IN PROGRESS**' "$phase_004" \
-    || fail "Phase 004 closeout is not IN PROGRESS"
+grep -Fq 'Status: **SEALED**' "$phase_004" \
+    || fail "Phase 004 closeout is not SEALED"
 
-grep -Fq '`PENDING_AFTER_IMPLEMENTATION_COMMIT`' "$phase_004" \
-    || fail "Phase 004 pending anchor is missing"
+grep -Fq '`b417d54`' "$phase_004" \
+    || fail "Phase 004 closeout anchor is incorrect"
 
 printf '%s\n' "repository baseline audit: phase ledger semantics: PASS"
 
