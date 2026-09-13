@@ -1,14 +1,39 @@
 use fme_fer::baseline_v1::{PROFILE_ID, apply_transform, evaluate, root};
 use fme_fer::{BaselinePath, FerError, TopologyBit};
 use num_bigint::BigInt;
+use serde::Deserialize;
+use std::fs;
+use std::path::PathBuf;
 
-fn assert_state(path: &str, expected_p: i64, expected_q: i64, expected_depth: u64) {
-    let path: BaselinePath = path.parse().expect("test path must be valid");
-    let state = evaluate(&path).expect("FER evaluation must succeed");
+#[derive(Debug, Deserialize)]
+struct ConformanceFile {
+    fixture_format_version: u64,
+    normative_wire_format: bool,
+    profile_id: String,
+    vectors: Vec<ConformanceVector>,
+}
 
-    assert_eq!(state.p(), &BigInt::from(expected_p));
-    assert_eq!(state.q(), &BigInt::from(expected_q));
-    assert_eq!(state.depth(), expected_depth);
+#[derive(Debug, Deserialize)]
+struct ConformanceVector {
+    path: String,
+    p: String,
+    q: String,
+    depth: u64,
+}
+
+fn conformance_path() -> PathBuf {
+    PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+        .join("../../conformance/fer-affine-2d-binary-v1/vectors.json")
+}
+
+fn load_conformance_file() -> ConformanceFile {
+    let path = conformance_path();
+
+    let bytes = fs::read(&path)
+        .unwrap_or_else(|error| panic!("failed to read {}: {error}", path.display()));
+
+    serde_json::from_slice(&bytes)
+        .unwrap_or_else(|error| panic!("failed to parse {}: {error}", path.display()))
 }
 
 #[test]
@@ -26,24 +51,58 @@ fn root_is_exact_zero_state() {
 }
 
 #[test]
-fn published_shallow_vectors_match_exact_recurrence() {
-    let vectors = [
-        ("", 0, 0, 0),
-        ("0", -3, 0, 1),
-        ("1", 3, 0, 1),
-        ("00", -12, -3, 2),
-        ("01", 6, 3, 2),
-        ("10", -6, 3, 2),
-        ("11", 12, -3, 2),
-        ("000", -36, -15, 3),
-        ("111", 36, -15, 3),
-        ("0101", 66, 33, 4),
-        ("1010", -66, 33, 4),
-        ("001101", 690, 237, 6),
-    ];
+fn external_conformance_fixture_metadata_is_expected() {
+    let fixture = load_conformance_file();
 
-    for (path, p, q, depth) in vectors {
-        assert_state(path, p, q, depth);
+    assert_eq!(fixture.fixture_format_version, 1);
+    assert!(!fixture.normative_wire_format);
+    assert_eq!(fixture.profile_id, PROFILE_ID);
+    assert!(!fixture.vectors.is_empty());
+}
+
+#[test]
+fn external_conformance_vectors_match_exact_recurrence() {
+    let fixture = load_conformance_file();
+
+    for vector in fixture.vectors {
+        let path: BaselinePath = vector
+            .path
+            .parse()
+            .unwrap_or_else(|error| panic!("invalid fixture path {:?}: {error}", vector.path));
+
+        let state = evaluate(&path)
+            .unwrap_or_else(|error| panic!("evaluation failed for {:?}: {error}", vector.path));
+
+        let expected_p = vector
+            .p
+            .parse::<BigInt>()
+            .unwrap_or_else(|error| panic!("invalid P value {:?}: {error}", vector.p));
+
+        let expected_q = vector
+            .q
+            .parse::<BigInt>()
+            .unwrap_or_else(|error| panic!("invalid Q value {:?}: {error}", vector.q));
+
+        assert_eq!(
+            state.p(),
+            &expected_p,
+            "P mismatch for path {:?}",
+            vector.path
+        );
+
+        assert_eq!(
+            state.q(),
+            &expected_q,
+            "Q mismatch for path {:?}",
+            vector.path
+        );
+
+        assert_eq!(
+            state.depth(),
+            vector.depth,
+            "depth mismatch for path {:?}",
+            vector.path
+        );
     }
 }
 
