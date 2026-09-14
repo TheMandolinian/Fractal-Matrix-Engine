@@ -50,6 +50,8 @@ required_files=(
     "docs/phase-docs/phase-001-100/phase 004/closeout.md"
     "docs/phase-docs/phase-001-100/phase 005/closeout.md"
     "docs/phase-docs/phase-001-100/phase 006/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 007/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 008/closeout.md"
     "conformance/fer-affine-2d-binary-v1/vectors.json"
     "scripts/conformance/reference_fer_affine_2d_binary_v1.py"
 )
@@ -79,6 +81,7 @@ phase_004="docs/phase-docs/phase-001-100/phase 004/closeout.md"
 phase_005="docs/phase-docs/phase-001-100/phase 005/closeout.md"
 phase_006="docs/phase-docs/phase-001-100/phase 006/closeout.md"
 phase_007="docs/phase-docs/phase-001-100/phase 007/closeout.md"
+phase_008="docs/phase-docs/phase-001-100/phase 008/closeout.md"
 
 grep -Fq '| Phase | Scope | Status | Implementation Anchor | Documentation Anchor | Anchor Repair |' "$phase_index" \
     || fail "lifecycle-anchor phase ledger header missing"
@@ -152,20 +155,37 @@ grep -Fq '`8d49bf9e`' "$phase_007" \
 grep -Fq '`749fcd7f`' "$phase_007" \
     || fail "Phase 007 anchor-repair merge is incorrect"
 
+grep -Fq '| 008 | Baseline Registered SHA-2 Digest Execution | IN PROGRESS | `443275a8` | — | — |' "$phase_index" \
+    || fail "Phase 008 active lifecycle ledger entry is incorrect"
+
+grep -Fq 'Status: **IN PROGRESS**' "$phase_008" \
+    || fail "Phase 008 closeout status is not IN PROGRESS"
+
+grep -Fq '`443275a8`' "$phase_008" \
+    || fail "Phase 008 implementation merge anchor is incorrect"
+
+grep -Fq 'Documentation merge anchor:' "$phase_008" \
+    || fail "Phase 008 documentation anchor field is missing"
+
+grep -Fq 'Anchor repair merge:' "$phase_008" \
+    || fail "Phase 008 anchor-repair field is missing"
+
+phase_008_dash_count="$(grep -Fc '`—`' "$phase_008")"
+
+[[ "$phase_008_dash_count" -ge 2 ]] \
+    || fail "Phase 008 temporary documentation/repair anchors are incorrect"
+
 grep -Fq 'Last sealed phase: **007**' "$phase_index" \
     || fail "Phase 007 is not recorded as the last sealed phase"
 
-grep -Fq 'Current phase: **none**' "$phase_index" \
-    || fail "Phase 007 closeout position is incorrect"
+grep -Fq 'Current phase: **008 — Baseline Registered SHA-2 Digest Execution**' "$phase_index" \
+    || fail "Phase 008 is not recorded as the current phase"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
 then
-    fail "pending phase anchor remains in sealed phase documentation"
+    fail "pending phase anchor remains in phase documentation"
 fi
-
-grep -Fq 'Last sealed phase: **007**' "$phase_index" \
-    || fail "Phase 007 is not the last sealed phase"
 
 printf '%s\n' "repository baseline audit: lifecycle-anchor phase ledger semantics: PASS"
 
