@@ -84,7 +84,7 @@ grep -Fq '| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0
 grep -Fq '| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` |' "$phase_index" \
     || fail "Phase 005 dual-anchor index entry is incorrect"
 
-grep -Fq '| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `PENDING_AFTER_DOCS_MERGE` |' "$phase_index" \
+grep -Fq '| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` |' "$phase_index" \
     || fail "Phase 006 dual-anchor index entry is incorrect"
 
 for phase_file in \
@@ -117,8 +117,14 @@ grep -Fq '`f3ab055`' "$phase_005" \
 grep -Fq '`7322debe`' "$phase_006" \
     || fail "Phase 006 implementation merge anchor is incorrect"
 
-grep -Fq '`PENDING_AFTER_DOCS_MERGE`' "$phase_006" \
-    || fail "Phase 006 pending documentation anchor is missing"
+grep -Fq '`c45746aa`' "$phase_006" \
+    || fail "Phase 006 documentation merge anchor is incorrect"
+
+if grep -RIn 'PENDING_AFTER_' \
+    docs/phase-docs/phase-001-100 >/dev/null
+then
+    fail "pending phase anchor remains in sealed phase documentation"
+fi
 
 grep -Fq 'Last sealed phase: **006**' "$phase_index" \
     || fail "Phase 006 is not the last sealed phase"

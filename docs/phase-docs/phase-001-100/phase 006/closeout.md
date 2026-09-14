@@ -8,7 +8,7 @@ Implementation merge anchor:
 
 Documentation merge anchor:
 
-`PENDING_AFTER_DOCS_MERGE`
+`c45746aa`
 
 ## Objective
 
@@ -172,13 +172,12 @@ not alter the exact FER recurrence mathematics established by earlier phases.
 The implementation merge anchor above was obtained from Git after the Phase 006
 implementation pull request was squash-merged into `main`.
 
-The documentation merge anchor cannot be known until this closeout branch is
-merged.
+The documentation closeout was subsequently squash-merged into `main`.
 
-Therefore the temporary value:
+The resulting documentation merge anchor is:
 
-`PENDING_AFTER_DOCS_MERGE`
+`c45746aa`
 
-must be replaced only after the actual documentation merge exists.
+This value was obtained from Git after the documentation merge existed.
 
-No documentation anchor may be predicted or fabricated.
+No documentation anchor was predicted or fabricated.
