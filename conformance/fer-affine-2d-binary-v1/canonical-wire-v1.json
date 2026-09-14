@@ -1,0 +1,214 @@
+{
+  "fixture_format_version": 1,
+  "normative_wire_format": true,
+  "wire_format_id": "FME-FER-AFFINE-2D-BINARY-V1-WIRE-V1",
+  "profile_id": "FME-FER-AFFINE-2D-BINARY-V1",
+  "provenance": {
+    "phase": "006",
+    "reference_method": "secondary-python-byte-encoder",
+    "reference_script": "scripts/conformance/generate_fer_canonical_wire_v1.py",
+    "independent_reproduction": false
+  },
+  "path_vectors": [
+    {
+      "id": "path-root",
+      "path": "",
+      "bit_length": 0,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000"
+    },
+    {
+      "id": "path-f0",
+      "path": "0",
+      "bit_length": 1,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000100"
+    },
+    {
+      "id": "path-f1",
+      "path": "1",
+      "bit_length": 1,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000180"
+    },
+    {
+      "id": "path-7-bit",
+      "path": "0101101",
+      "bit_length": 7,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000075a"
+    },
+    {
+      "id": "path-8-bit",
+      "path": "01000001",
+      "bit_length": 8,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000841"
+    },
+    {
+      "id": "path-9-bit",
+      "path": "010000011",
+      "bit_length": 9,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000094180"
+    },
+    {
+      "id": "path-mixed-16",
+      "path": "0010110100101101",
+      "bit_length": 16,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000102d2d"
+    },
+    {
+      "id": "path-mixed-33",
+      "path": "001011010010110100101101001011010",
+      "bit_length": 33,
+      "canonical_hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000212d2d2d2d00"
+    }
+  ],
+  "state_vectors": [
+    {
+      "id": "state-root",
+      "source_path": "",
+      "p": "0",
+      "q": "0",
+      "depth": 0,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "id": "state-f0",
+      "source_path": "0",
+      "p": "-3",
+      "q": "0",
+      "depth": 1,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000102000000000000000103000000000000000000"
+    },
+    {
+      "id": "state-f1",
+      "source_path": "1",
+      "p": "3",
+      "q": "0",
+      "depth": 1,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000101000000000000000103000000000000000000"
+    },
+    {
+      "id": "state-01",
+      "source_path": "01",
+      "p": "6",
+      "q": "3",
+      "depth": 2,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000020100000000000000010601000000000000000103"
+    },
+    {
+      "id": "state-10",
+      "source_path": "10",
+      "p": "-6",
+      "q": "3",
+      "depth": 2,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000020200000000000000010601000000000000000103"
+    },
+    {
+      "id": "state-mixed-8",
+      "source_path": "00101101",
+      "p": "6402",
+      "q": "2013",
+      "depth": 8,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000008010000000000000002190201000000000000000207dd"
+    },
+    {
+      "id": "state-mixed-32",
+      "source_path": "00101101001011010010110100101101",
+      "p": "1812534033401058",
+      "q": "569920495038477",
+      "depth": 32,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000002001000000000000000706707d773444e2010000000000000007020656f4a8300d"
+    },
+    {
+      "id": "state-mixed-128",
+      "source_path": "00101101001011010010110100101101001011010010110100101101001011010010110100101101001011010010110100101101001011010010110100101101",
+      "p": "11532583906292193959369996647633757753654972118822669960563682",
+      "q": "3626224836514555832585411317039480530788419068289602410280333",
+      "depth": 128,
+      "canonical_hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000008001000000000000001a072d3f2210ea3bee900250835f2d3c8cf9189d4b6483dfb34be201000000000000001a0241b0e1cde55cbdd0e8f9a5594ee236e21e2c2e239064b0758d"
+    }
+  ],
+  "failure_vectors": [
+    {
+      "id": "path-invalid-magic",
+      "decode_as": "path",
+      "hex": "474d454601011b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000",
+      "expected_error": "InvalidMagic"
+    },
+    {
+      "id": "path-unsupported-version",
+      "decode_as": "path",
+      "hex": "464d454602011b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000",
+      "expected_error": "UnsupportedVersion"
+    },
+    {
+      "id": "path-wrong-object-kind",
+      "decode_as": "path",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000",
+      "expected_error": "UnexpectedObjectKind"
+    },
+    {
+      "id": "path-profile-mismatch",
+      "decode_as": "path",
+      "hex": "464d454601011b474d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000",
+      "expected_error": "ProfileMismatch"
+    },
+    {
+      "id": "path-truncated-header",
+      "decode_as": "path",
+      "hex": "464d45",
+      "expected_error": "Truncated"
+    },
+    {
+      "id": "path-nonzero-padding",
+      "decode_as": "path",
+      "hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000101",
+      "expected_error": "NonZeroPathPadding"
+    },
+    {
+      "id": "path-trailing-byte",
+      "decode_as": "path",
+      "hex": "464d454601011b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000000",
+      "expected_error": "TrailingBytes"
+    },
+    {
+      "id": "state-invalid-sign",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000030000000000000000000000000000000000",
+      "expected_error": "InvalidIntegerSign"
+    },
+    {
+      "id": "state-positive-zero",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000010000000000000000000000000000000000",
+      "expected_error": "NonCanonicalZero"
+    },
+    {
+      "id": "state-negative-zero",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d56310000000000000000020000000000000000000000000000000000",
+      "expected_error": "NonCanonicalZero"
+    },
+    {
+      "id": "state-zero-with-magnitude",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000000000000000000000100000000000000000000",
+      "expected_error": "NonCanonicalZero"
+    },
+    {
+      "id": "state-leading-zero-magnitude",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000010100000000000000020003000000000000000000",
+      "expected_error": "NonCanonicalIntegerMagnitude"
+    },
+    {
+      "id": "state-truncated",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d563100000000000000000000000000000000000000000000000000",
+      "expected_error": "Truncated"
+    },
+    {
+      "id": "state-trailing-byte",
+      "decode_as": "exact_state",
+      "hex": "464d454601021b464d452d4645522d414646494e452d32442d42494e4152592d5631000000000000000000000000000000000000000000000000000000",
+      "expected_error": "TrailingBytes"
+    }
+  ]
+}

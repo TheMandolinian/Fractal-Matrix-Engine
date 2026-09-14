@@ -22,6 +22,7 @@ required_files=(
     "scripts/audit/audit_repository_baseline.sh"
     "scripts/audit/audit_phase_004_conformance_expansion.py"
     "scripts/audit/audit_phase_005_benchmark_characterization.py"
+    "scripts/audit/audit_phase_006_baseline_fer_canonical_encoding.py"
     "crates/fme-fer/benches/baseline_v1.rs"
     "docs/IMPLEMENTATION_SCOPE.md"
     "docs/PROFILE_STATUS.md"
@@ -143,6 +144,9 @@ PYTHONDONTWRITEBYTECODE=1 \
 
 PYTHONDONTWRITEBYTECODE=1 \
     python3 scripts/audit/audit_phase_005_benchmark_characterization.py
+
+PYTHONDONTWRITEBYTECODE=1 \
+    python3 scripts/audit/audit_phase_006_baseline_fer_canonical_encoding.py
 
 printf '%s\n' \
     "repository baseline audit: required files: PASS" \
