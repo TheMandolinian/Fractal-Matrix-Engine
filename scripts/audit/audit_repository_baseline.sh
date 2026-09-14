@@ -155,8 +155,8 @@ grep -Fq '`8d49bf9e`' "$phase_007" \
 grep -Fq '`749fcd7f`' "$phase_007" \
     || fail "Phase 007 anchor-repair merge is incorrect"
 
-grep -Fq '| 008 | Baseline Registered SHA-2 Digest Execution | SEALED | `443275a8` | `07130bf3` | — |' "$phase_index" \
-    || fail "Phase 008 sealed pre-backfill ledger entry is incorrect"
+grep -Fq '| 008 | Baseline Registered SHA-2 Digest Execution | SEALED | `443275a8` | `07130bf3` | `40b31897` |' "$phase_index" \
+    || fail "Phase 008 sealed ledger entry is incorrect"
 
 grep -Fq 'Status: **SEALED**' "$phase_008" \
     || fail "Phase 008 closeout status is not SEALED"
@@ -167,14 +167,14 @@ grep -Fq '`443275a8`' "$phase_008" \
 grep -Fq '`07130bf3`' "$phase_008" \
     || fail "Phase 008 documentation merge anchor is incorrect"
 
-grep -Fq 'The anchor-repair merge does not yet exist at the time this repair branch is' "$phase_008" \
-    || fail "Phase 008 pre-backfill anchor-repair state is not recorded"
+grep -Fq '`40b31897`' "$phase_008" \
+    || fail "Phase 008 anchor-repair merge is incorrect"
 
 grep -Fq 'Last sealed phase: **008**' "$phase_index" \
     || fail "Phase 008 is not recorded as the last sealed phase"
 
-grep -Fq 'Current lifecycle action: **Phase 008 anchor repair — repair merge not yet recorded**' "$phase_index" \
-    || fail "Phase 008 anchor-repair lifecycle action is not recorded"
+grep -Fq 'Current phase: **none**' "$phase_index" \
+    || fail "Phase 008 closeout position is incorrect"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
