@@ -10,12 +10,16 @@ This index is the chronological implementation ledger for FME phases 001–100.
 | 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` | — |
 | 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` | — |
 | 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` | `cd289812` |
-| 007 | Baseline Cryptographic Registry and Preimage Contract | IN PROGRESS | `a237660a` | — | — |
+| 007 | Baseline Cryptographic Registry and Preimage Contract | SEALED | `a237660a` | `8d49bf9e` | — |
 
-The distinct anchor-repair lifecycle begins with Phase 006. A dash in the
-Anchor Repair column means that no separate anchor-repair merge is recorded
-for that earlier phase; it must not be interpreted as an inferred or missing
-Git commit.
+The distinct anchor-repair lifecycle begins with Phase 006. For phases that
+predate that lifecycle, a dash in the Anchor Repair column means that no
+separate anchor-repair merge exists. During an active anchor-repair branch, a
+dash may also temporarily mean that the repair merge does not yet exist.
+
+A repair anchor must be replaced only with the real Git-derived merge hash
+after the corresponding repair pull request is merged. No repair hash may be
+predicted or fabricated.
 
 Phases 001 and 002 predate the documentation-anchor procedure. Their closeout
 documents were introduced together by `aa7aaa84` during the institutional
@@ -94,6 +98,6 @@ See:
 
 ## Current Position
 
-Last sealed phase: **006**
+Last sealed phase: **007**
 
-Current phase: **007 — Baseline Cryptographic Registry and Preimage Contract**
+Current lifecycle action: **Phase 007 anchor repair — repair merge not yet recorded**
