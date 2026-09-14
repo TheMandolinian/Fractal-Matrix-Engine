@@ -7,6 +7,7 @@ repository.workspace = true
 description = "Cryptographic registry and canonical preimage framing for the Fractal Matrix Engine"
 
 [dependencies]
+sha2 = { version = "=0.11.0", default-features = false }
 
 [dev-dependencies]
 serde = { version = "1", features = ["derive"] }

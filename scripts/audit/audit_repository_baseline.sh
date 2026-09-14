@@ -24,9 +24,15 @@ required_files=(
     "scripts/audit/audit_phase_005_benchmark_characterization.py"
     "scripts/audit/audit_phase_006_baseline_fer_canonical_encoding.py"
     "scripts/audit/audit_phase_007_cryptographic_registry_preimage.py"
+    "scripts/audit/audit_phase_008_registered_sha2_digest.py"
     "scripts/conformance/generate_crypto_registry_v1.py"
+    "scripts/conformance/generate_crypto_digest_v1.py"
     "conformance/crypto-registry-v1/CRYPTO_REGISTRY_V1.md"
     "conformance/crypto-registry-v1/crypto-registry-v1.json"
+    "conformance/crypto-digest-v1/CRYPTO_DIGEST_V1.md"
+    "conformance/crypto-digest-v1/crypto-digest-v1.json"
+    "crates/fme-crypto/src/digest_v1.rs"
+    "crates/fme-crypto/tests/digest_v1.rs"
     "crates/fme-crypto/Cargo.toml"
     "crates/fme-crypto/src/lib.rs"
     "crates/fme-crypto/tests/registry_preimage_v1.rs"
@@ -202,6 +208,9 @@ PYTHONDONTWRITEBYTECODE=1 \
 
 PYTHONDONTWRITEBYTECODE=1 \
     python3 scripts/audit/audit_phase_007_cryptographic_registry_preimage.py
+
+PYTHONDONTWRITEBYTECODE=1 \
+    python3 scripts/audit/audit_phase_008_registered_sha2_digest.py
 
 
 printf '%s\n' \
