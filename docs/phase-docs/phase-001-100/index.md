@@ -10,6 +10,7 @@ This index is the chronological implementation ledger for FME phases 001–100.
 | 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` | — |
 | 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` | — |
 | 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` | `cd289812` |
+| 007 | Baseline Cryptographic Registry and Preimage Contract | IN PROGRESS | `a237660a` | — | — |
 
 The distinct anchor-repair lifecycle begins with Phase 006. A dash in the
 Anchor Repair column means that no separate anchor-repair merge is recorded
@@ -81,8 +82,18 @@ See:
 
 `phase 006/closeout.md`
 
+## Phase 007 — Baseline Cryptographic Registry and Preimage Contract
+
+Establishes exact initial cryptographic-domain and hash-suite registries plus
+deterministic domain-separated preimage framing without executing digest
+algorithms.
+
+See:
+
+`phase 007/closeout.md`
+
 ## Current Position
 
 Last sealed phase: **006**
 
-Current phase: **No phase currently open**
+Current phase: **007 — Baseline Cryptographic Registry and Preimage Contract**
