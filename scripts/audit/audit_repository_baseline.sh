@@ -84,8 +84,8 @@ grep -Fq '| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0
 grep -Fq '| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` |' "$phase_index" \
     || fail "Phase 005 dual-anchor index entry is incorrect"
 
-grep -Fq '| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` |' "$phase_index" \
-    || fail "Phase 006 dual-anchor index entry is incorrect"
+grep -Fq '| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` | `cd289812` |' "$phase_index" \
+    || fail "Phase 006 lifecycle-anchor index entry is incorrect"
 
 for phase_file in \
     "$phase_001" \
@@ -120,6 +120,9 @@ grep -Fq '`7322debe`' "$phase_006" \
 grep -Fq '`c45746aa`' "$phase_006" \
     || fail "Phase 006 documentation merge anchor is incorrect"
 
+grep -Fq '`cd289812`' "$phase_006" \
+    || fail "Phase 006 anchor-repair merge is incorrect"
+
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
 then
@@ -129,7 +132,7 @@ fi
 grep -Fq 'Last sealed phase: **006**' "$phase_index" \
     || fail "Phase 006 is not the last sealed phase"
 
-printf '%s\n' "repository baseline audit: dual-anchor phase ledger semantics: PASS"
+printf '%s\n' "repository baseline audit: lifecycle-anchor phase ledger semantics: PASS"
 
 python3 - <<'PY'
 import json
