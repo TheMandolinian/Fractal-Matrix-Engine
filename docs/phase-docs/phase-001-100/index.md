@@ -2,13 +2,20 @@
 
 This index is the chronological implementation ledger for FME phases 001–100.
 
-| Phase | Scope | Status | Anchor |
-|---|---|---|---|
-| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |
-| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` |
-| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` |
-| 004 | Baseline FER Conformance Expansion | SEALED | `b417d54` |
-| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055` |
+| Phase | Scope | Status | Implementation Anchor | Documentation Anchor |
+|---|---|---|---|---|
+| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` | `aa7aaa84` |
+| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` | `aa7aaa84` |
+| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` | `dc359eed` |
+| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` |
+| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` |
+| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `PENDING_AFTER_DOCS_MERGE` |
+
+Phases 001 and 002 predate the current dual-anchor procedure. Their closeout
+documents were introduced together by `aa7aaa84` during the institutional
+repository-baseline work, so that commit is recorded as their historical
+documentation anchor rather than implying separate documentation pull
+requests.
 
 ## Phase 001 — Exact Baseline FER Core
 
@@ -59,8 +66,18 @@ See:
 
 `phase 005/closeout.md`
 
+## Phase 006 — Baseline FER Canonical Encoding
+
+Establishes the first normative, versioned canonical production wire encoding
+for baseline FER paths and exact states, including deterministic rejection of
+malformed and noncanonical representations.
+
+See:
+
+`phase 006/closeout.md`
+
 ## Current Position
 
-Last sealed phase: **005**
+Last sealed phase: **006**
 
 Current phase: **No phase currently open**

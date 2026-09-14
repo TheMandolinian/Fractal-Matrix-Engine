@@ -36,6 +36,7 @@ required_files=(
     "docs/phase-docs/phase-001-100/phase 003/closeout.md"
     "docs/phase-docs/phase-001-100/phase 004/closeout.md"
     "docs/phase-docs/phase-001-100/phase 005/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 006/closeout.md"
     "conformance/fer-affine-2d-binary-v1/vectors.json"
     "scripts/conformance/reference_fer_affine_2d_binary_v1.py"
 )
@@ -63,53 +64,66 @@ phase_002="docs/phase-docs/phase-001-100/phase 002/closeout.md"
 phase_003="docs/phase-docs/phase-001-100/phase 003/closeout.md"
 phase_004="docs/phase-docs/phase-001-100/phase 004/closeout.md"
 phase_005="docs/phase-docs/phase-001-100/phase 005/closeout.md"
+phase_006="docs/phase-docs/phase-001-100/phase 006/closeout.md"
 
-grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` |' "$phase_index" \
-    || fail "Phase 001 index entry or anchor is incorrect"
+grep -Fq '| Phase | Scope | Status | Implementation Anchor | Documentation Anchor |' "$phase_index" \
+    || fail "dual-anchor phase ledger header missing"
 
-grep -Fq '| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` |' "$phase_index" \
-    || fail "Phase 002 index entry or anchor is incorrect"
+grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` | `aa7aaa84` |' "$phase_index" \
+    || fail "Phase 001 dual-anchor index entry is incorrect"
 
-grep -Fq '| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` |' "$phase_index" \
-    || fail "Phase 003 index entry or anchor is incorrect"
+grep -Fq '| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` | `aa7aaa84` |' "$phase_index" \
+    || fail "Phase 002 dual-anchor index entry is incorrect"
 
-grep -Fq 'Status: **SEALED**' "$phase_001" \
-    || fail "Phase 001 closeout is not SEALED"
+grep -Fq '| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` | `dc359eed` |' "$phase_index" \
+    || fail "Phase 003 dual-anchor index entry is incorrect"
+
+grep -Fq '| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` |' "$phase_index" \
+    || fail "Phase 004 dual-anchor index entry is incorrect"
+
+grep -Fq '| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` |' "$phase_index" \
+    || fail "Phase 005 dual-anchor index entry is incorrect"
+
+grep -Fq '| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `PENDING_AFTER_DOCS_MERGE` |' "$phase_index" \
+    || fail "Phase 006 dual-anchor index entry is incorrect"
+
+for phase_file in \
+    "$phase_001" \
+    "$phase_002" \
+    "$phase_003" \
+    "$phase_004" \
+    "$phase_005" \
+    "$phase_006"
+do
+    grep -Fq 'Status: **SEALED**' "$phase_file" \
+        || fail "sealed phase closeout status missing: $phase_file"
+done
 
 grep -Fq '`cb7861b9`' "$phase_001" \
-    || fail "Phase 001 closeout anchor is incorrect"
-
-grep -Fq 'Status: **SEALED**' "$phase_002" \
-    || fail "Phase 002 closeout is not SEALED"
+    || fail "Phase 001 implementation anchor is incorrect"
 
 grep -Fq '`c5e996b5`' "$phase_002" \
-    || fail "Phase 002 closeout anchor is incorrect"
-
-grep -Fq 'Status: **SEALED**' "$phase_003" \
-    || fail "Phase 003 closeout is not SEALED"
+    || fail "Phase 002 implementation anchor is incorrect"
 
 grep -Fq '`aa7aaa84`' "$phase_003" \
-    || fail "Phase 003 closeout anchor is incorrect"
-
-grep -Fq '| 004 | Baseline FER Conformance Expansion | SEALED | `b417d54` |' "$phase_index" \
-    || fail "Phase 004 index entry or anchor is incorrect"
-
-grep -Fq 'Status: **SEALED**' "$phase_004" \
-    || fail "Phase 004 closeout is not SEALED"
+    || fail "Phase 003 implementation anchor is incorrect"
 
 grep -Fq '`b417d54`' "$phase_004" \
-    || fail "Phase 004 closeout anchor is incorrect"
-
-grep -Fq '| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055` |' "$phase_index" \
-    || fail "Phase 005 index entry or anchor is incorrect"
-
-grep -Fq 'Status: **SEALED**' "$phase_005" \
-    || fail "Phase 005 closeout is not SEALED"
+    || fail "Phase 004 implementation anchor is incorrect"
 
 grep -Fq '`f3ab055`' "$phase_005" \
-    || fail "Phase 005 closeout anchor is incorrect"
+    || fail "Phase 005 implementation anchor is incorrect"
 
-printf '%s\n' "repository baseline audit: phase ledger semantics: PASS"
+grep -Fq '`7322debe`' "$phase_006" \
+    || fail "Phase 006 implementation merge anchor is incorrect"
+
+grep -Fq '`PENDING_AFTER_DOCS_MERGE`' "$phase_006" \
+    || fail "Phase 006 pending documentation anchor is missing"
+
+grep -Fq 'Last sealed phase: **006**' "$phase_index" \
+    || fail "Phase 006 is not the last sealed phase"
+
+printf '%s\n' "repository baseline audit: dual-anchor phase ledger semantics: PASS"
 
 python3 - <<'PY'
 import json
