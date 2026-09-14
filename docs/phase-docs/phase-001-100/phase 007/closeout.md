@@ -12,7 +12,7 @@ Documentation merge anchor:
 
 Anchor repair merge:
 
-`—`
+`749fcd7f`
 
 ## Objective
 
@@ -173,13 +173,24 @@ This phase does not itself create cryptographic commitments.
 The implementation merge anchor above was obtained from Git after the Phase 007
 implementation pull request was squash-merged into `main`.
 
-The documentation merge anchor `8d49bf9e` was obtained from Git after the
-Phase 007 documentation pull request was squash-merged into `main`.
+The documentation closeout was subsequently squash-merged into `main`.
 
-The anchor-repair merge does not yet exist at the time this repair branch is
-authored. Its value will be recorded only after the anchor-repair pull request
-is squash-merged and the real Git-derived merge hash exists.
+The resulting documentation merge anchor is:
 
-Any subsequent record-only backfill of that real repair hash is bookkeeping.
-It does not create a fourth Phase 007 lifecycle anchor. No future merge value
-is predicted or fabricated.
+`8d49bf9e`
+
+This value was obtained from Git after the documentation merge existed.
+
+The documentation-anchor repair was subsequently squash-merged into `main`.
+
+The resulting anchor-repair merge is:
+
+`749fcd7f`
+
+This value was obtained from Git after the anchor-repair merge existed.
+
+The subsequent record-only backfill of this repair hash is bookkeeping and
+does not create a fourth Phase 007 lifecycle anchor.
+
+No implementation, documentation, or anchor-repair merge value was predicted
+or fabricated.
