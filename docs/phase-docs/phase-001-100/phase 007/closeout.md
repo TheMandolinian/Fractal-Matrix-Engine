@@ -1,6 +1,6 @@
 # Phase 007 — Baseline Cryptographic Registry and Preimage Contract
 
-Status: **IN PROGRESS**
+Status: **SEALED**
 
 Implementation merge anchor:
 
@@ -8,7 +8,7 @@ Implementation merge anchor:
 
 Documentation merge anchor:
 
-`—`
+`8d49bf9e`
 
 Anchor repair merge:
 
@@ -173,9 +173,13 @@ This phase does not itself create cryptographic commitments.
 The implementation merge anchor above was obtained from Git after the Phase 007
 implementation pull request was squash-merged into `main`.
 
-The documentation merge anchor does not yet exist.
+The documentation merge anchor `8d49bf9e` was obtained from Git after the
+Phase 007 documentation pull request was squash-merged into `main`.
 
-The anchor-repair merge does not yet exist.
+The anchor-repair merge does not yet exist at the time this repair branch is
+authored. Its value will be recorded only after the anchor-repair pull request
+is squash-merged and the real Git-derived merge hash exists.
 
-Those values will be recorded only after their corresponding Git merges
-actually exist. No future merge value is predicted or fabricated.
+Any subsequent record-only backfill of that real repair hash is bookkeeping.
+It does not create a fourth Phase 007 lifecycle anchor. No future merge value
+is predicted or fabricated.

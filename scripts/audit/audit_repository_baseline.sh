@@ -131,17 +131,26 @@ grep -Fq '`c45746aa`' "$phase_006" \
 grep -Fq '`cd289812`' "$phase_006" \
     || fail "Phase 006 anchor-repair merge is incorrect"
 
-grep -Fq '| 007 | Baseline Cryptographic Registry and Preimage Contract | IN PROGRESS | `a237660a` | — | — |' "$phase_index" \
-    || fail "Phase 007 in-progress ledger entry is incorrect"
+grep -Fq '| 007 | Baseline Cryptographic Registry and Preimage Contract | SEALED | `a237660a` | `8d49bf9e` | — |' "$phase_index" \
+    || fail "Phase 007 sealed pre-backfill ledger entry is incorrect"
 
-grep -Fq 'Status: **IN PROGRESS**' "$phase_007" \
-    || fail "Phase 007 closeout status is not IN PROGRESS"
+grep -Fq 'Status: **SEALED**' "$phase_007" \
+    || fail "Phase 007 closeout status is not SEALED"
 
 grep -Fq '`a237660a`' "$phase_007" \
     || fail "Phase 007 implementation merge anchor is incorrect"
 
-grep -Fq 'Current phase: **007 — Baseline Cryptographic Registry and Preimage Contract**' "$phase_index" \
-    || fail "Phase 007 is not recorded as the current phase"
+grep -Fq '`8d49bf9e`' "$phase_007" \
+    || fail "Phase 007 documentation merge anchor is incorrect"
+
+grep -Fq 'The anchor-repair merge does not yet exist at the time this repair branch is' "$phase_007" \
+    || fail "Phase 007 pre-backfill anchor-repair state is not recorded"
+
+grep -Fq 'Last sealed phase: **007**' "$phase_index" \
+    || fail "Phase 007 is not recorded as the last sealed phase"
+
+grep -Fq 'Current lifecycle action: **Phase 007 anchor repair — repair merge not yet recorded**' "$phase_index" \
+    || fail "Phase 007 anchor-repair lifecycle action is not recorded"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
@@ -149,8 +158,8 @@ then
     fail "pending phase anchor remains in sealed phase documentation"
 fi
 
-grep -Fq 'Last sealed phase: **006**' "$phase_index" \
-    || fail "Phase 006 is not the last sealed phase"
+grep -Fq 'Last sealed phase: **007**' "$phase_index" \
+    || fail "Phase 007 is not the last sealed phase"
 
 printf '%s\n' "repository baseline audit: lifecycle-anchor phase ledger semantics: PASS"
 
