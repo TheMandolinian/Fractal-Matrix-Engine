@@ -1,0 +1,85 @@
+{
+  "profile_id": "FME-DOMAIN-PREIMAGE-V1",
+  "domain_registry_id": "FME-CRYPTO-DOMAIN-REGISTRY-V1",
+  "hash_suite_registry_id": "FME-HASH-SUITE-REGISTRY-V1",
+  "magic_ascii": "FMEP",
+  "version": 1,
+  "domains": [
+    {
+      "name": "singularity_v1",
+      "identifier": "FME/SINGULARITY/V1",
+      "identifier_hex": "464d452f53494e47554c41524954592f5631"
+    },
+    {
+      "name": "authority_domain_v1",
+      "identifier": "FME/AUTHORITY_DOMAIN/V1",
+      "identifier_hex": "464d452f415554484f524954595f444f4d41494e2f5631"
+    }
+  ],
+  "hash_suites": [
+    {
+      "name": "sha2_256",
+      "identifier": "SHA2-256",
+      "identifier_hex": "534841322d323536",
+      "digest_length": 32
+    },
+    {
+      "name": "sha2_512",
+      "identifier": "SHA2-512",
+      "identifier_hex": "534841322d353132",
+      "digest_length": 64
+    }
+  ],
+  "preimage_vectors": [
+    {
+      "name": "singularity_empty",
+      "domain": "singularity_v1",
+      "payload_hex": "",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000000"
+    },
+    {
+      "name": "singularity_sample",
+      "domain": "singularity_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff"
+    },
+    {
+      "name": "authority_domain_sample",
+      "domain": "authority_domain_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000017464d452f415554484f524954595f444f4d41494e2f56310000000000000004000102ff"
+    }
+  ],
+  "malformed_vectors": [
+    {
+      "name": "invalid_magic",
+      "preimage_hex": "584d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff",
+      "expected_error": "InvalidMagic"
+    },
+    {
+      "name": "unsupported_version",
+      "preimage_hex": "464d4550020000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff",
+      "expected_error": "UnsupportedVersion"
+    },
+    {
+      "name": "unknown_domain",
+      "preimage_hex": "464d455001000000000000000e464d452f554e4b4e4f574e2f56310000000000000000",
+      "expected_error": "UnknownDomain"
+    },
+    {
+      "name": "truncated_domain",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56",
+      "expected_error": "Truncated"
+    },
+    {
+      "name": "truncated_payload",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102",
+      "expected_error": "Truncated"
+    },
+    {
+      "name": "trailing_bytes",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff00",
+      "expected_error": "TrailingBytes"
+    }
+  ]
+}
