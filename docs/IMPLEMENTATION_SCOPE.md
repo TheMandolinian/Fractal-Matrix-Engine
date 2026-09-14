@@ -16,6 +16,9 @@ Initial scope includes:
 - evaluation from the root;
 - continuation from retained exact parent state;
 - deterministic malformed-path failure;
+- versioned canonical production wire encoding for baseline paths and exact
+  states;
+- deterministic malformed and noncanonical wire rejection;
 - conformance fixtures;
 - unit/integration testing;
 - later benchmark instrumentation.
@@ -26,7 +29,6 @@ The initial scope does not include:
 - Authority Domain materialization;
 - Stable Authority Identity;
 - Singularity Root Artifact implementation;
-- canonical production wire encoding;
 - MMR history commitments;
 - authenticated state trees;
 - Proof Capsules;
