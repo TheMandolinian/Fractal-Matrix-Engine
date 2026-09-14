@@ -1,0 +1,67 @@
+{
+  "profile_id": "FME-REGISTERED-SHA2-DIGEST-V1",
+  "preimage_profile_id": "FME-DOMAIN-PREIMAGE-V1",
+  "hash_suite_registry_id": "FME-HASH-SUITE-REGISTRY-V1",
+  "digest_vectors": [
+    {
+      "name": "singularity_empty_sha2_256",
+      "hash_suite": "sha2_256",
+      "hash_suite_identifier": "SHA2-256",
+      "digest_length": 32,
+      "domain": "singularity_v1",
+      "payload_hex": "",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000000",
+      "digest_hex": "34a0b82487fc13415d78761858d7f0d94e0fc95c72da0e5a731737ddf9e8cae3"
+    },
+    {
+      "name": "singularity_empty_sha2_512",
+      "hash_suite": "sha2_512",
+      "hash_suite_identifier": "SHA2-512",
+      "digest_length": 64,
+      "domain": "singularity_v1",
+      "payload_hex": "",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000000",
+      "digest_hex": "f2cc2fa6eb8328fc072c62b810db54a3858cb04ba982495a31f288aba7a1646b377fcf75904a1c03870ce3c2e3f94382c46ff08c027e949ecbfca378723fa997"
+    },
+    {
+      "name": "singularity_sample_sha2_256",
+      "hash_suite": "sha2_256",
+      "hash_suite_identifier": "SHA2-256",
+      "digest_length": 32,
+      "domain": "singularity_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff",
+      "digest_hex": "87feed5c4295782a0467101ad27beec5fbfe18e2b7274da70c542839e5754f8b"
+    },
+    {
+      "name": "singularity_sample_sha2_512",
+      "hash_suite": "sha2_512",
+      "hash_suite_identifier": "SHA2-512",
+      "digest_length": 64,
+      "domain": "singularity_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000012464d452f53494e47554c41524954592f56310000000000000004000102ff",
+      "digest_hex": "7f7073c564590bb5c4e4268a1f7fc2a0a99901e47f507b5b8b693b4ae53d4179e487f875c668ed37f011fecdf2f193274e5c29559dc0bc0243f0750a0da94e67"
+    },
+    {
+      "name": "authority_domain_sample_sha2_256",
+      "hash_suite": "sha2_256",
+      "hash_suite_identifier": "SHA2-256",
+      "digest_length": 32,
+      "domain": "authority_domain_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000017464d452f415554484f524954595f444f4d41494e2f56310000000000000004000102ff",
+      "digest_hex": "b6a121b6fcbba0ad36d032b68df25d0e84e9c332bbd1a2d3e31c4bd5fb874905"
+    },
+    {
+      "name": "authority_domain_sample_sha2_512",
+      "hash_suite": "sha2_512",
+      "hash_suite_identifier": "SHA2-512",
+      "digest_length": 64,
+      "domain": "authority_domain_v1",
+      "payload_hex": "000102ff",
+      "preimage_hex": "464d4550010000000000000017464d452f415554484f524954595f444f4d41494e2f56310000000000000004000102ff",
+      "digest_hex": "05e3d454488bc661cd7f7f8fd6ec130fc7dac35aed0cfcf9aeffad85a49b7a7e9dabe92139c2b2c1f31405696e5f96698699a494c609da7bdbd0ca9106e25893"
+    }
+  ]
+}

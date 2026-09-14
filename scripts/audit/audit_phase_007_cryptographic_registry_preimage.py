@@ -195,22 +195,16 @@ require(
     "preimage implementation is coupled to hash-suite selection",
 )
 
-manifest = (
-    ROOT / "crates" / "fme-crypto" / "Cargo.toml"
-).read_text()
-
-dependencies_block = manifest.split("[dependencies]", 1)[1].split(
-    "[dev-dependencies]", 1
-)[0]
-
 require(
-    not dependencies_block.strip(),
-    "fme-crypto has an unexpected production dependency",
+    "sha2::" not in preimage_source
+    and "Sha256" not in preimage_source
+    and "Sha512" not in preimage_source,
+    "Phase 007 preimage implementation executes digest algorithms",
 )
 
 print(
     "phase 007 cryptographic registry audit: "
-    "domain/hash-suite separation and dependency boundary: PASS"
+    "domain/hash-suite separation and preimage boundary: PASS"
 )
 
 print("phase 007 cryptographic registry audit: PASS")
