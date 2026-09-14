@@ -2,16 +2,21 @@
 
 This index is the chronological implementation ledger for FME phases 001–100.
 
-| Phase | Scope | Status | Implementation Anchor | Documentation Anchor |
-|---|---|---|---|---|
-| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` | `aa7aaa84` |
-| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` | `aa7aaa84` |
-| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` | `dc359eed` |
-| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` |
-| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` |
-| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` |
+| Phase | Scope | Status | Implementation Anchor | Documentation Anchor | Anchor Repair |
+|---|---|---|---|---|---|
+| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` | `aa7aaa84` | — |
+| 002 | External Conformance Vector Consumption | SEALED | `c5e996b5` | `aa7aaa84` | — |
+| 003 | Institutional Repository Baseline | SEALED | `aa7aaa84` | `dc359eed` | — |
+| 004 | Baseline FER Conformance Expansion | SEALED | `b417d542` | `b0ad7139` | — |
+| 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` | — |
+| 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` | `cd289812` |
 
-Phases 001 and 002 predate the current dual-anchor procedure. Their closeout
+The distinct anchor-repair lifecycle begins with Phase 006. A dash in the
+Anchor Repair column means that no separate anchor-repair merge is recorded
+for that earlier phase; it must not be interpreted as an inferred or missing
+Git commit.
+
+Phases 001 and 002 predate the documentation-anchor procedure. Their closeout
 documents were introduced together by `aa7aaa84` during the institutional
 repository-baseline work, so that commit is recorded as their historical
 documentation anchor rather than implying separate documentation pull

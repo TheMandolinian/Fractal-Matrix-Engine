@@ -10,6 +10,10 @@ Documentation merge anchor:
 
 `c45746aa`
 
+Anchor repair merge:
+
+`cd289812`
+
 ## Objective
 
 Establish the first normative canonical production wire encoding for the
@@ -180,4 +184,13 @@ The resulting documentation merge anchor is:
 
 This value was obtained from Git after the documentation merge existed.
 
-No documentation anchor was predicted or fabricated.
+The documentation-anchor repair was subsequently squash-merged into `main`.
+
+The resulting anchor-repair merge is:
+
+`cd289812`
+
+This value was obtained from Git after the anchor-repair merge existed.
+
+No implementation, documentation, or anchor-repair merge value was predicted
+or fabricated.
