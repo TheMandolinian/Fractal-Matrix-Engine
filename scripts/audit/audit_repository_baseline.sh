@@ -72,9 +72,10 @@ phase_003="docs/phase-docs/phase-001-100/phase 003/closeout.md"
 phase_004="docs/phase-docs/phase-001-100/phase 004/closeout.md"
 phase_005="docs/phase-docs/phase-001-100/phase 005/closeout.md"
 phase_006="docs/phase-docs/phase-001-100/phase 006/closeout.md"
+phase_007="docs/phase-docs/phase-001-100/phase 007/closeout.md"
 
-grep -Fq '| Phase | Scope | Status | Implementation Anchor | Documentation Anchor |' "$phase_index" \
-    || fail "dual-anchor phase ledger header missing"
+grep -Fq '| Phase | Scope | Status | Implementation Anchor | Documentation Anchor | Anchor Repair |' "$phase_index" \
+    || fail "lifecycle-anchor phase ledger header missing"
 
 grep -Fq '| 001 | Exact Baseline FER Core | SEALED | `cb7861b9` | `aa7aaa84` |' "$phase_index" \
     || fail "Phase 001 dual-anchor index entry is incorrect"
@@ -129,6 +130,18 @@ grep -Fq '`c45746aa`' "$phase_006" \
 
 grep -Fq '`cd289812`' "$phase_006" \
     || fail "Phase 006 anchor-repair merge is incorrect"
+
+grep -Fq '| 007 | Baseline Cryptographic Registry and Preimage Contract | IN PROGRESS | `a237660a` | — | — |' "$phase_index" \
+    || fail "Phase 007 in-progress ledger entry is incorrect"
+
+grep -Fq 'Status: **IN PROGRESS**' "$phase_007" \
+    || fail "Phase 007 closeout status is not IN PROGRESS"
+
+grep -Fq '`a237660a`' "$phase_007" \
+    || fail "Phase 007 implementation merge anchor is incorrect"
+
+grep -Fq 'Current phase: **007 — Baseline Cryptographic Registry and Preimage Contract**' "$phase_index" \
+    || fail "Phase 007 is not recorded as the current phase"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
