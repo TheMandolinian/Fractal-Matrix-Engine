@@ -1,6 +1,6 @@
 # Phase 008 — Baseline Registered SHA-2 Digest Execution
 
-Status: **IN PROGRESS**
+Status: **SEALED**
 
 Implementation merge anchor:
 
@@ -8,7 +8,7 @@ Implementation merge anchor:
 
 Documentation merge anchor:
 
-`—`
+`07130bf3`
 
 Anchor repair merge:
 
@@ -224,22 +224,13 @@ profile explicitly defines that meaning.
 The implementation merge anchor above was obtained from Git after the Phase
 008 implementation pull request was squash-merged into `main`.
 
-The documentation merge does not yet exist.
+The documentation merge anchor `07130bf3` was obtained from Git after the
+Phase 008 documentation pull request was squash-merged into `main`.
 
-Therefore the documentation merge anchor remains:
+The anchor-repair merge does not yet exist at the time this repair branch is
+authored. Its value will be recorded only after the anchor-repair pull request
+is squash-merged and the real Git-derived merge hash exists.
 
-`—`
-
-The anchor-repair merge also does not yet exist.
-
-Therefore the anchor-repair merge remains:
-
-`—`
-
-After this documentation closeout is squash-merged, its actual Git-derived
-documentation merge hash must be recorded on a dedicated anchor-repair branch.
-
-No documentation or anchor-repair hash may be predicted or fabricated.
-
-The phase remains **IN PROGRESS** until the lifecycle-anchor repair is
-completed.
+Any subsequent record-only backfill of that real repair hash is bookkeeping.
+It does not create a fourth Phase 008 lifecycle anchor. No future merge value
+is predicted or fabricated.

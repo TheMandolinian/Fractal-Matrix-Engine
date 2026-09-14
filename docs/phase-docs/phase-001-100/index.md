@@ -11,7 +11,7 @@ This index is the chronological implementation ledger for FME phases 001–100.
 | 005 | Baseline FER Benchmark Characterization | SEALED | `f3ab055b` | `80f66946` | — |
 | 006 | Baseline FER Canonical Encoding | SEALED | `7322debe` | `c45746aa` | `cd289812` |
 | 007 | Baseline Cryptographic Registry and Preimage Contract | SEALED | `a237660a` | `8d49bf9e` | `749fcd7f` |
-| 008 | Baseline Registered SHA-2 Digest Execution | IN PROGRESS | `443275a8` | — | — |
+| 008 | Baseline Registered SHA-2 Digest Execution | SEALED | `443275a8` | `07130bf3` | — |
 
 The distinct anchor-repair lifecycle begins with Phase 006. For phases that
 predate that lifecycle, a dash in the Anchor Repair column means that no
@@ -109,6 +109,6 @@ See:
 
 ## Current Position
 
-Last sealed phase: **007**
+Last sealed phase: **008**
 
-Current phase: **008 — Baseline Registered SHA-2 Digest Execution**
+Current lifecycle action: **Phase 008 anchor repair — repair merge not yet recorded**
