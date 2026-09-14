@@ -16,7 +16,9 @@ pub mod baseline_v1;
 pub mod error;
 pub mod path;
 pub mod state;
+pub mod wire_v1;
 
 pub use error::FerError;
 pub use path::{BaselinePath, TopologyBit};
 pub use state::ExactState;
+pub use wire_v1::CanonicalWireError;
