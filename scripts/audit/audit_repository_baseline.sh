@@ -70,6 +70,7 @@ required_files=(
     "docs/phase-docs/phase-001-100/phase 007/closeout.md"
     "docs/phase-docs/phase-001-100/phase 008/closeout.md"
     "docs/phase-docs/phase-001-100/phase 009/closeout.md"
+    "docs/phase-docs/phase-001-100/phase 010/closeout.md"
     "conformance/fer-affine-2d-binary-v1/vectors.json"
     "scripts/conformance/reference_fer_affine_2d_binary_v1.py"
 )
@@ -101,6 +102,7 @@ phase_006="docs/phase-docs/phase-001-100/phase 006/closeout.md"
 phase_007="docs/phase-docs/phase-001-100/phase 007/closeout.md"
 phase_008="docs/phase-docs/phase-001-100/phase 008/closeout.md"
 phase_009="docs/phase-docs/phase-001-100/phase 009/closeout.md"
+phase_010="docs/phase-docs/phase-001-100/phase 010/closeout.md"
 
 grep -Fq '| Phase | Scope | Status | Implementation Anchor | Documentation Anchor | Anchor Repair |' "$phase_index" \
     || fail "lifecycle-anchor phase ledger header missing"
@@ -209,8 +211,25 @@ phase_009_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print;
 [[ "$phase_009_repair_anchor" == '`5b2b547`' ]] \
     || fail "Phase 009 anchor-repair merge is incorrect"
 
-grep -Fq 'Current phase: **none**' "$phase_index" \
-    || fail "Phase 009 sealed position is incorrect"
+grep -Fq '| 010 | Baseline SRA Commitment Profile | DOCUMENTATION CLOSEOUT | `96276106` | — | — |' "$phase_index" \
+    || fail "Phase 010 documentation-closeout ledger entry is incorrect"
+
+grep -Fq 'Status: **DOCUMENTATION CLOSEOUT IN PROGRESS**' "$phase_010" \
+    || fail "Phase 010 closeout status is incorrect"
+
+grep -Fq '`96276106`' "$phase_010" \
+    || fail "Phase 010 implementation merge anchor is incorrect"
+
+phase_010_documentation_anchor="$(awk '/^Documentation merge anchor:/{getline; getline; print; exit}' "$phase_010")"
+[[ "$phase_010_documentation_anchor" == '`—`' ]] \
+    || fail "Phase 010 documentation merge anchor must remain unresolved during docs closeout"
+
+phase_010_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print; exit}' "$phase_010")"
+[[ "$phase_010_repair_anchor" == '`—`' ]] \
+    || fail "Phase 010 anchor-repair merge must remain unresolved during docs closeout"
+
+grep -Fq 'Current phase: **010 — documentation closeout in progress**' "$phase_index" \
+    || fail "Phase 010 documentation-closeout position is incorrect"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null

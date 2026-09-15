@@ -30,3 +30,33 @@ Not yet frozen beyond that baseline wire profile:
 
 Implementation convenience must not silently define any unresolved normative
 profile rule.
+
+## FME-SRA-COMMITMENT-V1
+
+Status: **implemented baseline commitment profile / not operational authority**
+
+Phase 010 freezes and implements:
+
+- commitment over exact `FME-SRA-CANONICAL-V1` bytes;
+- semantic domain `FME/SINGULARITY/V1`;
+- hash-suite selection from the SRA's declared `default_hash_suite_id`;
+- registered `SHA2-256` and `SHA2-512` digest execution;
+- typed `SraCommitmentV1` output;
+- deterministic Rust and secondary Python conformance evidence.
+
+The commitment profile does not define:
+
+- Stable SRA identity;
+- Stable Authority Identity;
+- Authority Domain materialization;
+- Primary Trunk authority;
+- accepted-history commitments;
+- MMR history;
+- authenticated state;
+- Proof Capsules;
+- authorization;
+- cross-domain coordination.
+
+`SRA commitment != SRA stable identity`
+
+`root artifact != operational trunk`
