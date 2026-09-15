@@ -2,6 +2,7 @@
 members = [
     "crates/fme-crypto",
     "crates/fme-fer",
+    "crates/fme-sra",
 ]
 resolver = "3"
 
