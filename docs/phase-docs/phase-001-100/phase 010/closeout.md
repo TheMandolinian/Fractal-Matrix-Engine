@@ -1,6 +1,6 @@
 # Phase 010 — Baseline SRA Commitment Profile
 
-Status: **DOCUMENTATION CLOSEOUT IN PROGRESS**
+Status: **SEALED**
 
 Implementation merge anchor:
 
@@ -8,7 +8,7 @@ Implementation merge anchor:
 
 Documentation merge anchor:
 
-`—`
+`ccd092d4`
 
 Anchor repair merge:
 
@@ -224,20 +224,21 @@ authority.
 The implementation merge anchor above was obtained from Git after the Phase 010
 implementation pull request was squash-merged into `main`.
 
-The documentation merge does not yet exist.
+The documentation closeout was subsequently squash-merged into `main`.
 
-Therefore the documentation merge anchor remains:
+The resulting documentation merge anchor is:
+
+`ccd092d4`
+
+This value was obtained from Git after the documentation merge existed.
+
+The anchor-repair merge does not yet exist and remains:
 
 `—`
 
-The anchor-repair merge also does not yet exist and remains:
+The repair value will not be predicted or fabricated.
 
-`—`
+After this anchor-repair branch is squash-merged, the real repair merge hash
+must be read from updated `main` and recorded through record-only bookkeeping.
 
-Neither value will be predicted or fabricated.
-
-After this documentation closeout is squash-merged, the real documentation
-merge hash must be read from updated `main`.
-
-A dedicated anchor-repair branch will then record that real documentation
-anchor and seal the Phase 010 lifecycle.
+That later bookkeeping does not create a fourth Phase 010 lifecycle anchor.
