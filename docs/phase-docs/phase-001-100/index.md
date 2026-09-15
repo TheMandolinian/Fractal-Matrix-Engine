@@ -13,7 +13,7 @@ This index is the chronological implementation ledger for FME phases 001–100.
 | 007 | Baseline Cryptographic Registry and Preimage Contract | SEALED | `a237660a` | `8d49bf9e` | `749fcd7f` |
 | 008 | Baseline Registered SHA-2 Digest Execution | SEALED | `443275a8` | `07130bf3` | `40b31897` |
 | 009 | Baseline Singularity Root Artifact Canonical Serialization | SEALED | `ff1ca940` | `4dab2f5b` | `5b2b547` |
-| 010 | Baseline SRA Commitment Profile | DOCUMENTATION CLOSEOUT | `96276106` | — | — |
+| 010 | Baseline SRA Commitment Profile | SEALED | `96276106` | `ccd092d4` | — |
 
 The distinct anchor-repair lifecycle begins with Phase 006. For phases that
 predate that lifecycle, a dash in the Anchor Repair column means that no
@@ -132,6 +132,6 @@ See:
 
 ## Current Position
 
-Last sealed phase: **009**
+Last sealed phase: **010**
 
-Current phase: **010 — documentation closeout in progress**
+Current phase: **none**
