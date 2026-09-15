@@ -311,7 +311,7 @@ for forbidden in (
 lib = LIB.read_text(encoding="utf-8")
 
 for token in (
-    "This crate does not create SRA commitments",
+    "Phase 010 adds the baseline cryptographic SRA commitment profile.",
     "Stable Authority Identities",
     "Authority Domain materialization",
     "accepted-history commitments",

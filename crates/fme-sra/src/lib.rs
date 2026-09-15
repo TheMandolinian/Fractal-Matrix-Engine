@@ -6,14 +6,19 @@
 //! Phase 009 establishes the exact baseline SRA semantic boundary and its
 //! canonical byte representation.
 //!
-//! This crate does not create SRA commitments, Stable Authority Identities,
-//! Authority Domain materialization, accepted-history commitments, MMRs,
-//! authenticated state, Proof Capsules, authorization, or cross-domain
-//! coordination.
+//! Phase 010 adds the baseline cryptographic SRA commitment profile.
+//!
+//! This crate does not create Stable Authority Identities or Authority Domain materialization.
+//! It also does not create accepted-history commitments, MMRs, authenticated state,
+//! Proof Capsules, authorization, or cross-domain coordination.
 
+pub mod commitment_v1;
 pub mod error;
 pub mod sra_v1;
 
+pub use commitment_v1::{
+    SRA_COMMITMENT_PROFILE_ID, SraCommitmentError, SraCommitmentV1, commit_sra,
+};
 pub use error::SraError;
 pub use sra_v1::{
     SRA_ARTIFACT_VERSION, SRA_CANONICAL_PROFILE_ID, SRA_FER_PROFILE_ID, SRA_MAGIC,
