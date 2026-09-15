@@ -182,28 +182,28 @@ grep -Fq '`07130bf3`' "$phase_008" \
 grep -Fq '`40b31897`' "$phase_008" \
     || fail "Phase 008 anchor-repair merge is incorrect"
 
-grep -Fq 'Last sealed phase: **008**' "$phase_index" \
-    || fail "Phase 008 is not recorded as the last sealed phase"
+grep -Fq 'Last sealed phase: **009**' "$phase_index" \
+    || fail "Phase 009 is not recorded as the last sealed phase"
 
-grep -Fq '| 009 | Baseline Singularity Root Artifact Canonical Serialization | DOCUMENTATION CLOSEOUT | `ff1ca940` | — | — |' "$phase_index" \
-    || fail "Phase 009 documentation-closeout ledger entry is incorrect"
+grep -Fq '| 009 | Baseline Singularity Root Artifact Canonical Serialization | SEALED | `ff1ca940` | `4dab2f5b` | — |' "$phase_index" \
+    || fail "Phase 009 sealed ledger entry is incorrect"
 
-grep -Fq 'Status: **DOCUMENTATION CLOSEOUT IN PROGRESS**' "$phase_009" \
-    || fail "Phase 009 closeout status is incorrect"
+grep -Fq 'Status: **SEALED**' "$phase_009" \
+    || fail "Phase 009 closeout status is not SEALED"
 
 grep -Fq '`ff1ca940`' "$phase_009" \
     || fail "Phase 009 implementation merge anchor is incorrect"
 
 phase_009_documentation_anchor="$(awk '/^Documentation merge anchor:/{getline; getline; print; exit}' "$phase_009")"
-[[ "$phase_009_documentation_anchor" == '`—`' ]] \
-    || fail "Phase 009 documentation merge anchor must remain unresolved during docs closeout"
+[[ "$phase_009_documentation_anchor" == '`4dab2f5b`' ]] \
+    || fail "Phase 009 documentation merge anchor is incorrect"
 
 phase_009_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print; exit}' "$phase_009")"
 [[ "$phase_009_repair_anchor" == '`—`' ]] \
-    || fail "Phase 009 anchor-repair merge must remain unresolved during docs closeout"
+    || fail "Phase 009 anchor-repair merge must remain unresolved until repair merge exists"
 
-grep -Fq 'Current phase: **009 — documentation closeout in progress**' "$phase_index" \
-    || fail "Phase 009 documentation-closeout position is incorrect"
+grep -Fq 'Current phase: **none**' "$phase_index" \
+    || fail "Phase 009 sealed position is incorrect"
 
 if grep -RIn 'PENDING_AFTER_' \
     docs/phase-docs/phase-001-100 >/dev/null
