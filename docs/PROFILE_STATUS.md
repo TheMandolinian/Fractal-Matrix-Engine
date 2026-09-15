@@ -13,10 +13,15 @@ Currently targeted:
 - deterministic continuation;
 - implementation conformance vectors.
 
-Not yet frozen:
+Frozen and implemented for the baseline FER profile:
 
-- normative topology-path wire encoding;
-- normative exact-coordinate wire encoding;
+- normative canonical wire encoding for baseline logical paths;
+- normative canonical wire encoding for exact baseline `P`, `Q`, and depth states.
+
+Not yet frozen beyond that baseline wire profile:
+
+- general topology-address descriptor wire encoding;
+- additional coordinate or profile representations;
 - maximum authoritative topology depth;
 - production resource limits;
 - profile registry representation;
