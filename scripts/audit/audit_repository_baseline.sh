@@ -185,7 +185,7 @@ grep -Fq '`40b31897`' "$phase_008" \
 grep -Fq 'Last sealed phase: **009**' "$phase_index" \
     || fail "Phase 009 is not recorded as the last sealed phase"
 
-grep -Fq '| 009 | Baseline Singularity Root Artifact Canonical Serialization | SEALED | `ff1ca940` | `4dab2f5b` | — |' "$phase_index" \
+grep -Fq '| 009 | Baseline Singularity Root Artifact Canonical Serialization | SEALED | `ff1ca940` | `4dab2f5b` | `5b2b547` |' "$phase_index" \
     || fail "Phase 009 sealed ledger entry is incorrect"
 
 grep -Fq 'Status: **SEALED**' "$phase_009" \
@@ -199,8 +199,8 @@ phase_009_documentation_anchor="$(awk '/^Documentation merge anchor:/{getline; g
     || fail "Phase 009 documentation merge anchor is incorrect"
 
 phase_009_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print; exit}' "$phase_009")"
-[[ "$phase_009_repair_anchor" == '`—`' ]] \
-    || fail "Phase 009 anchor-repair merge must remain unresolved until repair merge exists"
+[[ "$phase_009_repair_anchor" == '`5b2b547`' ]] \
+    || fail "Phase 009 anchor-repair merge is incorrect"
 
 grep -Fq 'Current phase: **none**' "$phase_index" \
     || fail "Phase 009 sealed position is incorrect"
