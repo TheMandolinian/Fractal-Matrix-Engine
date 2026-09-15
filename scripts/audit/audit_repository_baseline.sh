@@ -211,7 +211,7 @@ phase_009_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print;
 grep -Fq 'Last sealed phase: **010**' "$phase_index" \
     || fail "Phase 010 is not recorded as the last sealed phase"
 
-grep -Fq '| 010 | Baseline SRA Commitment Profile | SEALED | `96276106` | `ccd092d4` | — |' "$phase_index" \
+grep -Fq '| 010 | Baseline SRA Commitment Profile | SEALED | `96276106` | `ccd092d4` | `72017c56` |' "$phase_index" \
     || fail "Phase 010 sealed ledger entry is incorrect"
 
 grep -Fq 'Status: **SEALED**' "$phase_010" \
@@ -225,8 +225,8 @@ phase_010_documentation_anchor="$(awk '/^Documentation merge anchor:/{getline; g
     || fail "Phase 010 documentation merge anchor is incorrect"
 
 phase_010_repair_anchor="$(awk '/^Anchor repair merge:/{getline; getline; print; exit}' "$phase_010")"
-[[ "$phase_010_repair_anchor" == '`—`' ]] \
-    || fail "Phase 010 anchor-repair merge must remain unresolved until repair merge exists"
+[[ "$phase_010_repair_anchor" == '`72017c56`' ]] \
+    || fail "Phase 010 anchor-repair merge is incorrect"
 
 grep -Fq 'Current phase: **none**' "$phase_index" \
     || fail "Phase 010 sealed position is incorrect"

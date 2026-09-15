@@ -12,7 +12,7 @@ Documentation merge anchor:
 
 Anchor repair merge:
 
-`—`
+`72017c56`
 
 ## Objective
 
@@ -232,13 +232,16 @@ The resulting documentation merge anchor is:
 
 This value was obtained from Git after the documentation merge existed.
 
-The anchor-repair merge does not yet exist and remains:
+The documentation-anchor repair was subsequently squash-merged into `main`.
 
-`—`
+The resulting anchor-repair merge is:
 
-The repair value will not be predicted or fabricated.
+`72017c56`
 
-After this anchor-repair branch is squash-merged, the real repair merge hash
-must be read from updated `main` and recorded through record-only bookkeeping.
+This value was obtained from Git after the anchor-repair merge existed.
 
-That later bookkeeping does not create a fourth Phase 010 lifecycle anchor.
+This record-only backfill is bookkeeping and does not create a fourth Phase 010
+lifecycle anchor.
+
+No implementation, documentation, or anchor-repair merge value was predicted
+or fabricated.
