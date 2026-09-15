@@ -27,14 +27,16 @@ Initial scope includes:
 - deterministic registered SHA2-256 and SHA2-512 digest execution;
 - baseline `SingularityRootArtifactV1` semantics;
 - versioned canonical production wire encoding for the baseline SRA;
-- deterministic malformed and noncanonical SRA rejection.
+- deterministic malformed and noncanonical SRA rejection;
+- baseline SRA cryptographic commitment profile `FME-SRA-COMMITMENT-V1`;
+- deterministic SRA commitment generation through the registered
+  `FME/SINGULARITY/V1` preimage and hash-suite pipeline.
 
 The initial scope does not include:
 
 - HashHelix accepted-event authority;
 - Authority Domain materialization;
 - Stable Authority Identity;
-- Singularity Root Artifact cryptographic commitment;
 - Stable SRA identity derivation;
 - MMR history commitments;
 - authenticated state trees;
