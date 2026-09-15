@@ -26,17 +26,24 @@ required_files=(
     "scripts/audit/audit_phase_007_cryptographic_registry_preimage.py"
     "scripts/audit/audit_phase_008_registered_sha2_digest.py"
     "scripts/audit/audit_phase_009_sra_canonical_serialization.py"
+    "scripts/audit/audit_phase_010_sra_commitment_profile.py"
     "scripts/conformance/generate_crypto_registry_v1.py"
     "scripts/conformance/generate_crypto_digest_v1.py"
     "scripts/conformance/generate_sra_canonical_v1.py"
+    "scripts/conformance/generate_sra_commitment_v1.py"
     "conformance/sra-canonical-v1/CANONICAL_WIRE_V1.md"
     "conformance/sra-canonical-v1/sra-canonical-v1.json"
+    "conformance/sra-commitment-v1/SRA_COMMITMENT_V1.md"
+    "conformance/sra-commitment-v1/sra-commitment-v1.json"
     "crates/fme-sra/Cargo.toml"
     "crates/fme-sra/src/lib.rs"
     "crates/fme-sra/src/error.rs"
     "crates/fme-sra/src/sra_v1.rs"
+    "crates/fme-sra/src/commitment_v1.rs"
     "crates/fme-sra/tests/canonical_v1.rs"
     "crates/fme-sra/tests/conformance_v1.rs"
+    "crates/fme-sra/tests/commitment_v1.rs"
+    "crates/fme-sra/tests/commitment_conformance_v1.rs"
     "conformance/crypto-registry-v1/CRYPTO_REGISTRY_V1.md"
     "conformance/crypto-registry-v1/crypto-registry-v1.json"
     "conformance/crypto-digest-v1/CRYPTO_DIGEST_V1.md"
@@ -259,6 +266,9 @@ PYTHONDONTWRITEBYTECODE=1 \
 
 PYTHONDONTWRITEBYTECODE=1 \
     python3 scripts/audit/audit_phase_009_sra_canonical_serialization.py
+
+PYTHONDONTWRITEBYTECODE=1 \
+    python3 scripts/audit/audit_phase_010_sra_commitment_profile.py
 
 printf '%s\n' \
     "repository baseline audit: required files: PASS" \
